@@ -1,0 +1,80 @@
+<!doctype html>
+<!--
+ @license
+ Copyright 2019 Google LLC. All Rights Reserved.
+ SPDX-License-Identifier: Apache-2.0
+-->
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Directions Service</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.ts"></script>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <b>Start: </b>
+      <select id="start"></select>
+      <b>End: </b>
+      <select id="end">
+        <option disabled selected>Selecciona...</option>
+      </select>
+      <script>
+        const startDirections=[
+          'Jilotepec, estado de mexico','Calpulalpan, estado de mexico','Canalejas, estado de mexico','Xhixhata, estado de mexico','Chapa de mota, estado de mexico','Toluca, estado de mexico',
+          'Aguascalientes','La Paz, baja california sur','Mexicali, mex','Campeche','Chiapas','Chihuahua','Ciudad de México','Coahuila de Zaragoza','Colima','Durango','Guanajuato','Guerrero',
+          'Hidalgo','Jalisco','Michoacán de Ocampo','Morelos','Nayarit','Nuevo León','Oaxaca','Puebla','Querétaro','Quintana Roo','San Luis Potosí','Sinaloa','Sonora','Tabasco','Tamaulipas',
+          'Tlaxcala','Veracruz de Ignacio de la Llave','Yucatán','Zacatecas',
+          
+          'Nueva York','Los Ángeles','Buenos Aires','Sao Paulo','Toronto', 'Lima', 'Bogotá','Santiago de Chile', 'Río de Janeiro', 'Chicago', 'Miami','Caracas', 'La Habana', 'Montreal',
+          'Santo Domingo', 'Guayaquil', 'Ciudad de Guatemala', 'San Juan','Panamá', 'Asunción', 'Quito', 'San Salvador', 'San José',
+
+          'Londres', 'París, Francia', 'Berlín', 'Madrid', 'Roma', 'Atenas', 'Ámsterdam', 'Viena', 'Bruselas', 'Copenhague', 'Estocolmo', 'Dublín', 'Lisboa', 'Praga', 'Budapest', 'Varsovia',
+          'Helsinki', 'Oslo', 'Zúrich', 'Barcelona', 'Milán', 'Múnich', 'Hamburgo', 'Bucarest', 'Sofía',
+
+          'Lagos', 'El Cairo', 'Nairobi', 'Johannesburgo', 'Casablanca', 'Accra', 'Abiyán', 'Dakar', 'Kampala', 'Luanda', 'Harare', 'Addis Abeba', 'Túnez', 'Argel', 'Kigali', 'Dar es-Salam',
+          'Maputo', 'Bamako', 'Uagadugú', 'Port Louis', 'Libreville', 'Antananarivo', 'Jartum', 'Kinshasa', 'Gaborone',
+
+          'Tokio', 'Pekín', 'Delhi', 'Bangkok', 'Seúl', 'Kuala Lumpur', 'Manila', 'Singapur', 'Shanghái', 'Hong Kong', 'Bombay', 'Yakarta', 'Ho Chi Minh', 'Riad', 'Teherán', 'Karachi',
+          'Bagdad', 'Katmandú', 'Doha', 'Dubái', 'Abu Dabi', 'Colombo', 'Hanói', 'Amán', 'Daca',
+
+          'Sídney', 'Melbourne', 'Auckland', 'Brisbane', 'Perth', 'Wellington', 'Adelaida', 'Honolulu', 'Canberra', 'Suva', 'Nouméa', 'Papeete', 'Honiara', 'Apia', 'Port Moresby',
+          'Nukuʻalofa', 'Pago Pago', 'Port Vila', 'Majuro', 'Tarawa', 'Avarua', 'Hagåtña', 'Saipán', 'Palikir'
+
+
+        ]
+        const endDirections=startDirections
+        const selectElementStart = document.getElementById('start');
+        startDirections.forEach(opcion => {
+          const nuevoOption = document.createElement('option');
+          nuevoOption.value = opcion;
+          nuevoOption.text = opcion.split(',')[0];
+          selectElementStart.appendChild(nuevoOption);
+        });
+        const selectElementEnd = document.getElementById('end');
+        endDirections.forEach(opcion => {
+          const nuevoOption = document.createElement('option');
+          nuevoOption.value = opcion;
+          nuevoOption.text = opcion.split(',')[0];
+          selectElementEnd.appendChild(nuevoOption);
+        });
+  
+      </script>
+    </div>
+    <div id="map"></div>
+
+    <!-- 
+      The `defer` attribute causes the script to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises. See
+      https://developers.google.com/maps/documentation/javascript/load-maps-js-api
+      for more information.
+      -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBi45ahHQeC6yBnJ90lWDaNj3dwcgeNXfQ&callback=initMap&v=weekly"
+      defer
+    ></script>
+  </body>
+</html>
