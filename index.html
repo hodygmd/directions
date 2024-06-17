@@ -7,17 +7,19 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <title>Directions Service</title>
+    <title>Direcciones-Jose Manuel</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-
+    <link rel="icon" type="image/svg+xml" href="/geo.svg" />
     <link rel="stylesheet" type="text/css" href="./style.css" />
     <script type="module" src="./index.ts"></script>
   </head>
   <body>
     <div id="floating-panel">
-      <b>Start: </b>
-      <select id="start"></select>
-      <b>End: </b>
+      <b>Origen: </b>
+      <select id="start">
+        <option disabled>Selecciona...</option>
+      </select>
+      <b>Destino: </b>
       <select id="end">
         <option disabled selected>Selecciona...</option>
       </select>
