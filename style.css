@@ -34,4 +34,16 @@ body {
   line-height: 30px;
   padding-left: 10px;
 }
-
+#sidebar {
+  position: absolute;
+  padding: 2px;
+  top: 10px;
+  left: 80%;
+  z-index: 5;
+  background-color: #fff;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: "Roboto", "sans-serif";
+  height: 2rem;
+  width: auto;
+}

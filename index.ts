@@ -5,6 +5,7 @@
  */
 
 function initMap(): void {
+  (document.getElementById("sidebar") as HTMLElement).style.display = "none";
   const directionsService = new google.maps.DirectionsService();
   const directionsRenderer = new google.maps.DirectionsRenderer();
   const map = new google.maps.Map(
@@ -45,12 +46,23 @@ function calculateAndDisplayRoute(
       },
       travelMode: google.maps.TravelMode.DRIVING,
     })
-    .then((response) => {
+    .then((response) => {    
       directionsRenderer.setDirections(response);
+      const route = response.routes[0];
+      let totalDistance = 0;
+      for (const leg of route.legs) {
+        totalDistance += leg?.distance?.value || 0;
+      }
+      // Convert distance to kilometers and display it
+      totalDistance = totalDistance / 1000;
+      console.log(`Total Distance: ${totalDistance.toFixed(2)} km`);
+
+      (document.getElementById('total-distance') as HTMLElement).innerHTML=totalDistance + ' km';
+      
+      (document.getElementById("sidebar") as HTMLElement).style.display = "block";
     })
     .catch((e) => /*window.alert("Directions request failed due to " + e)*/window.alert("No se encontraron rutas entre el origen y el destino"));
 }
-
 declare global {
   interface Window {
     initMap: () => void;
